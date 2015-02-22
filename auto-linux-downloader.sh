@@ -28,3 +28,10 @@ file=`curl -l ftp://mirror.rackspace.com/archlinux/iso/latest/ | grep torrent`
 file=ftp://mirror.rackspace.com/archlinux/iso/latest/$file
 wget $file -O $torrent_location/archlinux.torrent
 
+#Raspian
+wget http://downloads.raspberrypi.org/raspbian_latest.torrent -O $torrent_location/raspian.torrent
+
+#Centos Netinst amd64
+file=`curl -l ftp://mirror.oss.ou.edu/centos/ | sort -n -r | awk NR==1`
+file2=`curl -l ftp://mirror.oss.ou.edu/centos//$file/isos/x86_64/ |  grep NetInstall.torrent`
+wget ftp://mirror.oss.ou.edu/centos//$file/isos/x86_64/$file2 -O $torrent_location/centos.torrent
