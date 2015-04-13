@@ -21,7 +21,7 @@ count=`curl -l $ubuntu/$release/ | grep .torrent | wc -l`
         x=1
     while [  $x -le $count ]; do
                 version=`curl -l $ubuntu/$release/ | grep .torrent | awk NR==$x`
-                wget $ubuntu/$release/$version -O $torrent_location/ubuntu$x.torrent
+                wget $ubuntu/$release/$version -O $torrent_location/ubuntu-$x.torrent
                 let x=x+1
     done
 
@@ -55,7 +55,7 @@ count=`curl -l $suse | grep .torrent | wc -l`
         x=1
     while [  $x -le $count ]; do
                 version=`curl -l $suse | grep .torrent | awk NR==$x`
-                wget $suse/$version -O $torrent_location/suse$x.torrent
+                wget $suse/$version -O $torrent_location/suse-$x.torrent
                 let x=x+1
     done
 
