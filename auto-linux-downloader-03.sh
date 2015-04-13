@@ -1,17 +1,17 @@
 #/bin/bash
 
-#This version dowloads many more torrents
+#This version of the script overwrites itself - only keeping the newest torrent files
 
 torrent_location=/home/petes/public_html
 
 #Raspian
-wget http://downloads.raspberrypi.org/raspbian_latest.torrent -O $torrent_location/raspbian_latest.torrent
+wget http://downloads.raspberrypi.org/raspbian_latest.torrent -O $torrent_location/raspbian.torrent
 
 
 #Arch Netinst Dual
 file=`curl -l ftp://mirror.rackspace.com/archlinux/iso/latest/ | grep torrent` 
 file=ftp://mirror.rackspace.com/archlinux/iso/latest/$file
-wget $file -O $torrent_location/$file
+wget $file -O $torrent_location/arch.torrent
 
 
 #Ubuntu Latest
@@ -21,7 +21,7 @@ count=`curl -l $ubuntu/$release/ | grep .torrent | wc -l`
         x=1
     while [  $x -le $count ]; do
                 version=`curl -l $ubuntu/$release/ | grep .torrent | awk NR==$x`
-                wget $ubuntu/$release/$version -O $torrent_location/$version
+                wget $ubuntu/$release/$version -O $torrent_location/ubuntu$x.torrent
                 let x=x+1
     done
 
@@ -32,7 +32,7 @@ count=`curl -l $debian | grep .torrent | wc -l`
         x=1
     while [  $x -le $count ]; do
                 version=`curl -l $debian | grep .torrent | awk NR==$x`
-                wget $debian/$version -O $torrent_location/$version
+                wget $debian/$version -O $torrent_location/debian64-$x.torrent
                 let x=x+1
     done
 
@@ -43,7 +43,7 @@ count=`curl -l $debian | grep .torrent | wc -l`
         x=1
     while [  $x -le $count ]; do
                 version=`curl -l $debian | grep .torrent | awk NR==$x`
-                wget $debian/$version -O $torrent_location/$version
+                wget $debian/$version -O $torrent_location/debian-$x.torrent
                 let x=x+1
     done
 
@@ -55,7 +55,7 @@ count=`curl -l $suse | grep .torrent | wc -l`
         x=1
     while [  $x -le $count ]; do
                 version=`curl -l $suse | grep .torrent | awk NR==$x`
-                wget $suse/$version -O $torrent_location/$version
+                wget $suse/$version -O $torrent_location/suse$x.torrent
                 let x=x+1
     done
 
@@ -67,7 +67,7 @@ count=`curl -l $centos/$release/isos/x86_64/ | grep .torrent | wc -l`
         x=1
     while [  $x -le $count ]; do
                 version=`curl -l $centos/$release/isos/x86_64/ | grep .torrent | awk NR==$x`
-                wget $centos/$release/isos/x86_64/$version -O $torrent_location/$version
+                wget $centos/$release/isos/x86_64/$version -O $torrent_location/centos-$x.torrent
                 let x=x+1
     done
 
