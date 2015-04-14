@@ -12,8 +12,8 @@
 #
 
 #torrent client's watch directory
-#torrent_location=/home/petes/public_html
-torrent_location=/home/peter/public_html
+#torrent_location=/home/petes/public_html/
+torrent_location=/home/peter/public_html/
 
 #Delete old torrents betfore starting
 rm $torrent_location/*
@@ -36,27 +36,27 @@ wget -r -nH --cut-dirs=3 --no-parent -A "*.torrent" $ubuntu/$release/ -P $torren
 
 #Debian DVD amd64 
 debian=ftp://cdimage.debian.org/cdimage/release/current/amd64/bt-dvd/
-wget -r -nH --cut-dirs=5 --no-parent -A "*.torrent" -R  "*update*" $debian/$version -P $torrent_location/
+wget -r -nH --cut-dirs=5 --no-parent -A "*.torrent" -R  "*update*" $debian/ -P $torrent_location/
 
 
 #Debian CD amd64 
 debian=ftp://cdimage.debian.org/cdimage/release/current/amd64/bt-cd/
-wget -r -nH --cut-dirs=5 --no-parent -A "*netinst*" -R  "*update*" $debian/$version -P $torrent_location/
+wget -r -nH --cut-dirs=5 --no-parent -A "*netinst*" -R  "*update*" $debian/ -P $torrent_location/
 
 
 #Debian DVD i386
 debian=ftp://cdimage.debian.org/cdimage/release/current/i386/bt-dvd/
-wget -r -nH --cut-dirs=5 --no-parent -A "*.torrent" -R  "*update*" $debian/$version -P $torrent_location/
+wget -r -nH --cut-dirs=5 --no-parent -A "*.torrent" -R  "*update*" $debian/ -P $torrent_location/
 
 
 #Debian CD i386
 debian=ftp://cdimage.debian.org/cdimage/release/current/i386/bt-cd/
-wget -r -nH --cut-dirs=5 --no-parent -A "*netinst*" -R  "*update*" $debian/$version -P $torrent_location/
+wget -r -nH --cut-dirs=5 --no-parent -A "*netinst*" -R  "*update*" $debian/ -P $torrent_location/
 
 
 #OpenSUSE  
 suse=ftp://www.gtlib.gatech.edu/pub/opensuse/distribution/openSUSE-stable/iso/
-wget -r -nH --cut-dirs=5 --no-parent -A "*DVD*.torrent" $suse/$version -P $torrent_location/
+wget -r -nH --cut-dirs=5 --no-parent -A "*DVD*.torrent" $suse/ -P $torrent_location/
 
 
 #Centos 
