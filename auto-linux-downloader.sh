@@ -78,6 +78,10 @@ wget -r -nH --cut-dirs=2 --no-parent -A "*Workstation*" -R  "*Alpha*" http://tor
 wget -r -nH --cut-dirs=2 --no-parent -A "*Server*"  -R  "*Alpha*" http://torrent.fedoraproject.org/torrents/ -P $torrent_location/
 
 
+#Kali
+wget -r -nH --cut-dirs=6 --no-parent -A "*.torrent" http://ftp.cc.uoc.gr/mirrors/linux/kali/kali-images/kali-latest/amd64/ -P $torrent_location/
+
+
 #Slackware 
 wget -r -nH --cut-dirs=2 --no-parent -A "*dvd*"  -R  "*source*" http://www.slackware.com/torrents/ -P $torrent_location/
 
