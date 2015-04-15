@@ -13,7 +13,8 @@
 
 #torrent client's watch directory
 #torrent_location=/home/petes/public_html/
-torrent_location=/home/peter/public_html/
+#torrent_location=/home/peter/public_html/
+torrent_location=/root/test/
 
 #Delete old torrents betfore starting
 rm $torrent_location/*
@@ -23,9 +24,9 @@ rm $torrent_location/*
 
 
 #Arch Netinst Dual
-release=`curl -l ftp://mirror.rackspace.com/archlinux/iso// | grep torrent` 
-release=ftp://mirror.rackspace.com/archlinux/iso//$release
-wget $release -O $torrent_location/$release
+arch=ftp://mirror.rackspace.com/archlinux/iso/
+release=`curl -l $arch | sort -n -r | awk NR==1`
+wget $arch/$release/*dual.iso.torrent -P $torrent_location/
 
 
 #Ubuntu 
