@@ -5,6 +5,11 @@
 #
 # This script automatically downloads .torrent files for Linux distributions
 # Paired with a torrent client this creates an automated Linux iso seed box.
+# I just chose to download the most common torrents for each distro, but 
+# this script could be edited to download just the torrents you would like.
+#
+# You can find the .torrent files output by this script at the link below
+# http://users.silenceisdefeat.net/~petes/
 #
 # To add this as a cronjob, run crontab -e and add something like the line below
 # 
@@ -12,12 +17,11 @@
 #
 
 #torrent client's watch directory
-#torrent_location=/home/petes/public_html/
-#torrent_location=/home/peter/public_html/
-torrent_location=/root/test/
+torrent_location=/home/petes/public_html/
+
 
 #Delete old torrents betfore starting
-rm $torrent_location/*
+#rm $torrent_location/*
 
 
 ################# FTP ##################
