@@ -9,7 +9,7 @@
 # this script could be edited to download just the torrents you would like.
 #
 # You can find the .torrent files output by this script at the link below
-# http://users.silenceisdefeat.net/~petes/
+# http://users.silenceisdefeat.net/~petes/all-torrents/
 #
 # To add this as a cronjob, run crontab -e and add something like the line below
 # 
@@ -17,7 +17,7 @@
 #
 
 #torrent client's watch directory
-torrent_location=/home/petes/public_html/
+torrent_location=/root/watch/
 
 
 #Delete old torrents betfore starting

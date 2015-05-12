@@ -9,7 +9,7 @@
 # this script could be edited to download just the torrents you would like.
 #
 # You can find the .torrent files output by this script at the link below
-# http://users.silenceisdefeat.net/~petes/
+# http://users.silenceisdefeat.net/~petes/minimal-torrents/
 #
 # To add this as a cronjob, run crontab -e and add something like the line below
 # 
@@ -24,7 +24,6 @@ torrent_location=/root/watch/
 #rm $torrent_location/*
 
 
-################# FTP ##################
 ################# FTP ##################
 
 
@@ -47,16 +46,6 @@ wget -r -nH --cut-dirs=5 --no-parent -A "*.torrent" -R  "*update*" $debian/ -P $
 
 #Debian CD amd64 
 debian=ftp://cdimage.debian.org/cdimage/release/current/amd64/bt-cd/
-wget -r -nH --cut-dirs=5 --no-parent -A "*netinst*" -R  "*update*" $debian/ -P $torrent_location/
-
-
-#Debian DVD i386
-debian=ftp://cdimage.debian.org/cdimage/release/current/i386/bt-dvd/
-wget -r -nH --cut-dirs=5 --no-parent -A "*.torrent" -R  "*update*" $debian/ -P $torrent_location/
-
-
-#Debian CD i386
-debian=ftp://cdimage.debian.org/cdimage/release/current/i386/bt-cd/
 wget -r -nH --cut-dirs=5 --no-parent -A "*netinst*" -R  "*update*" $debian/ -P $torrent_location/
 
 
