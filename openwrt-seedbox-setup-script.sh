@@ -1,5 +1,6 @@
-# This script created an automated seedbox on an openwrt router.
-# It requires a flash drive with one large ext4 partion for storage.
+# This script creates an automated seedbox on an openwrt router.
+# It requires a flash drive with one large ext4 partion (/dev/sda1) for storage.
+# You can use fdisk/cfdisk to create the partition table on the flash drive.
 
 #Install Packages
 
@@ -27,11 +28,6 @@ EOT
 mkdir /mnt/downloads
 mkdir /mnt/watch
 
-#Automatically load transmission on boot
-
-/etc/init.d/transmission enable
-/etc/init.d/transmission start
-
 #Load Transmisson Config File
 
 rm -rf /etc/config/transmission
@@ -56,7 +52,7 @@ config transmission
         option dht_enabled true
         option download_dir '/mnt/downloads/'
         option download_queue_enabled true
-        option download_queue_size 3
+        option download_queue_size 2
         option encryption 1
         option idle_seeding_limit 0
         option idle_seeding_limit_enabled false
@@ -110,6 +106,11 @@ config transmission
         option watch_dir '/mnt/watch'
 EOT
 
+#Automatically load transmission on boot
+
+/etc/init.d/transmission enable
+/etc/init.d/transmission start
+
 #Load Autodownload Script into Crontab and start cron on boot
 
 cat <<EOT >> /root/script
@@ -123,4 +124,5 @@ rm -rf /root/scipt
 /etc/init.d/cron enable
 
 #run script once
+
 wget -r -nH --cut-dirs=3 --no-parent --reject="index.html*" http://users.silenceisdefeat.net/~petes/minimal-torrents/ -P /mnt/watch
