@@ -5,11 +5,11 @@
 #Install Packages
 
 opkg update
-opkg install transmission-web htop mtr e2fsprogs cfdisk kmod-fs-ext4 kmod-usb-storage block-mount wget luci-app-vnstat luci-app-ddns
+opkg install transmission-web e2fsprogs cfdisk kmod-fs-ext4 kmod-usb-storage block-mount 
 
 #Nice to have, uncomment if you have space
 
-#opkg install nmap 
+#opkg install nmap luci-app-vnstat htop mtr wget
 
 #Create FileSystem and Automount it on boot
 
@@ -115,18 +115,3 @@ EOT
 /etc/init.d/transmission enable
 /etc/init.d/transmission start
 
-#Load Autodownload Script into Crontab and start cron on boot
-
-cat <<EOT >> /root/script
-0 3 * * * wget -r -nH --cut-dirs=3 --no-parent --reject="index.html*" http://users.silenceisdefeat.net/~petes/minimal-torrents/ -P /mnt/watch
-
-EOT
-
-crontab /root/script
-rm -rf /root/script
-/etc/init.d/cron start
-/etc/init.d/cron enable
-
-#run script once
-
-wget -r -nH --cut-dirs=3 --no-parent --reject="index.html*" http://users.silenceisdefeat.net/~petes/minimal-torrents/ -P /mnt/watch
